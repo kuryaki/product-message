@@ -34,16 +34,15 @@ Products List | Messages List | Message Content
 [Product] 1 — * [Message]
 
 **Product**
-- uuid
+- id
 - name
 - price 
 
 **Message**
-- to
 - name
 - content 
 - productId (ref)
-- uuid
+- id
 
 
 ### Routes
@@ -70,8 +69,8 @@ Sends Message
 ## TODO
 
 - [x] Setup environment
-- [ ] Create mock routes
-- [ ] Create migration to create model
+- [x] Create mock routes
+- [x] Create migration to create model
 - [ ] Create simple HTML UI
 - [ ] Make routes work 
 
