@@ -16,7 +16,7 @@ migrate = Migrate(app, db)
 
 @app.route('/', methods=['GET'])
 def home():
-    products = Product.query.limit(20).all()
+    products = Product.query.all()
     return render_template('home.html', products=products)
 
 @app.route('/products', methods=['POST'])
@@ -25,7 +25,10 @@ def products():
 
 @app.route('/products/<int:product_id>/messages', methods=['GET'])
 def list_product_messages(product_id):
-    return 'List product: %s messages' % product_id
+    products = Product.query.all()
+    product = Product.query.filter_by(id=product_id)
+    messages = Message.query.filter_by(product_id=product_id).all()
+    return render_template('home.html', products=products, product=product, messages=messages)
 
 @app.route('/products/<int:product_id>/messages', methods=['GET', 'POST'])
 def add_message(product_id):

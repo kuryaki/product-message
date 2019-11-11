@@ -76,7 +76,8 @@ Sends Message
 - [X] ~~Seed three products~~
 - [x] Populate server rendered HTML from models
 - [x] Fix home view
-- [ ] Add selected product handler and fix view
+- [x] Add selected product handler and fix view
+- [ ] Add Create Message form handler
 - [ ] Add selected message handler and fix view
 - [ ] Organize BE code
 - [ ] Add React to UI 

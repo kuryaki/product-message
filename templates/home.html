@@ -14,7 +14,7 @@
                 <h2>Products</h2>
                 <div class="list-group" id="list-tab" role="tablist">
                 {% for product in products %}
-                    <a class="list-group-item list-group-item-action" id="{{product.id}}" data-toggle="list" href="/products/{{product.id}}" role="tab">{{product.name}} <small class="float-right">{{product.price}}</small></a>
+                    <a class="list-group-item list-group-item-action" id="{{product.id}}" data-toggle="list" href="/products/{{product.id}}/messages" role="tab">{{product.name}} <small class="float-right">{{product.price}}</small></a>
                 {% endfor %}
                 </div>
             </div>
@@ -22,13 +22,12 @@
                 <h2>Messages</h2>
                 {% if product %}
                 <div class="list-group">
+                {% for message in messages %}
                     <a href="#" class="list-group-item list-group-item-action">
                         <div class="d-flex w-100 justify-content-between">
-                            <h5 class="mb-1">On delivery</h5>
+                            <h5 class="mb-1">{{message.name}}</h5>
                         </div>
-                        {% raw %}
-                        <p class="mb-1">Your {{product.name}} is being sent</p>
-                        {% endraw %}
+                        <p class="mb-1">{{message.content}}</p>
                     </a>
                     <a href="#" class="list-group-item list-group-item-action">
                         <div class="d-flex w-100 justify-content-between">
@@ -38,11 +37,13 @@
                         <p class="mb-1">Thanks for purchasing {{product.name}} for {{product.price}}</p>
                         {% endraw %}
                     </a>
+                {% endfor %}
                     <a href="#" class="list-group-item list-group-item-action">
                         <div class="d-flex w-100 justify-content-between">
                             <h5 class="mb-1">Add new Message</h5>
                         </div>
                         <form>
+                            <input type="hidden" id="productId" name="productId" value="{{product.id}}">
                             <div class="form-group">
                                 <label for="messageName">Message Name</label>
                                 <input id="messageName" class="form-control" type="text">
