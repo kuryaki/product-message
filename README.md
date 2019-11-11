@@ -82,7 +82,7 @@ Sends Message
 - [X] Switch message list depending on product
 - [X] Store a message
 - [X] Make routes work 
-- [ ] Send Message Through Twilio
+- [X] Send Message Through Twilio
 - [ ] Organize BE code
 - [ ] Add React to UI 
 

@@ -10,18 +10,25 @@ from flask_wtf import FlaskForm, CSRFProtect
 from wtforms import IntegerField, StringField, TextAreaField
 from wtforms.validators import DataRequired
 
+from twilio.rest import Client
+
 import jinja2
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 app.config['SECRET_KEY'] = 'you-will-never-guess'
+app.config['TWILIO_SID'] = 'AC34af70a5b417bc6701280bf0222462af'
+app.config['TWILIO_TOKEN'] ='e03dc9262712600f85a0dcda30c61101'
+app.config['TWILIO_MESSAGING_SERVICE'] = 'MG95a674c87cf3664036c1f292cafb30f9'
 
 csrf = CSRFProtect()
 csrf.init_app(app)
 
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
+
+client = Client(app.config['TWILIO_SID'], app.config['TWILIO_TOKEN'])
 
 ## Forms
 
@@ -69,9 +76,11 @@ def send_message(message_id):
 
     if request.method == 'POST':
         if sendForm.validate():
-            print('Send to Twilio')
-            print(request.form['phone'])
-            print(request.form['content'])
+            twilio_message = client.messages.create(
+                messaging_service_sid=app.config['TWILIO_MESSAGING_SERVICE'],
+                to='+1' + request.form['phone'], 
+                body=request.form['content'])
+            print(twilio_message)
 
 
     products = Product.query.all()
