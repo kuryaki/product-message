@@ -1,7 +1,7 @@
 # pylint: disable=missing-docstring,too-few-public-methods,invalid-name
 import os
 
-from flask import Flask
+from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 
@@ -16,7 +16,7 @@ migrate = Migrate(app, db)
 
 @app.route('/', methods=['GET'])
 def home():
-    return 'List Products'
+    return render_template('home.html')
 
 @app.route('/products', methods=['POST'])
 def products():

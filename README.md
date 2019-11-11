@@ -71,9 +71,11 @@ Sends Message
 - [x] Setup environment
 - [x] Create mock routes
 - [x] Create migration to create model
-- [ ] Add views from server
-- [ ] Seed three products
-- [ ] Create simple HTML UI
+- [X] Add views from server
+- [X] Create simple HTML UI
+- [X] ~~Seed three products~~
+- [ ] Populate server rendered HTML from models
+- [ ] Organize BE code
 - [ ] Add React to UI 
 - [ ] Switch message list depending on product
 - [ ] Store a message
