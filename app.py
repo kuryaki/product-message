@@ -16,7 +16,8 @@ migrate = Migrate(app, db)
 
 @app.route('/', methods=['GET'])
 def home():
-    return render_template('home.html')
+    products = Product.query.limit(20).all()
+    return render_template('home.html', products=products)
 
 @app.route('/products', methods=['POST'])
 def products():

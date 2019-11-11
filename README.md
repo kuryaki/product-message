@@ -74,7 +74,10 @@ Sends Message
 - [X] Add views from server
 - [X] Create simple HTML UI
 - [X] ~~Seed three products~~
-- [ ] Populate server rendered HTML from models
+- [x] Populate server rendered HTML from models
+- [x] Fix home view
+- [ ] Add selected product handler and fix view
+- [ ] Add selected message handler and fix view
 - [ ] Organize BE code
 - [ ] Add React to UI 
 - [ ] Switch message list depending on product

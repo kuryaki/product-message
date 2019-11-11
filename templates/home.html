@@ -13,14 +13,14 @@
             <div class="col">
                 <h2>Products</h2>
                 <div class="list-group" id="list-tab" role="tablist">
-                    <a class="list-group-item list-group-item-action" id="product_1" data-toggle="list" href="/products/1" role="tab" aria-controls="product_1">Powdered Milk <small class="float-right">2.99</small></a>
-                    <a class="list-group-item list-group-item-action" id="product_2" data-toggle="list" href="/products/2" role="tab" aria-controls="product_2">Jelly <small class="float-right">0.99</small></a>
-                    <a class="list-group-item list-group-item-action" id="product_3" data-toggle="list" href="/products/3" role="tab" aria-controls="product_2">Yogurth <small class="float-right">1.25</small></a>
-                    <a class="list-group-item list-group-item-action" id="product_4" data-toggle="list" href="/products/4" role="tab" aria-controls="product_3">Apples <small class="float-right">3.00</small></a>
+                {% for product in products %}
+                    <a class="list-group-item list-group-item-action" id="{{product.id}}" data-toggle="list" href="/products/{{product.id}}" role="tab">{{product.name}} <small class="float-right">{{product.price}}</small></a>
+                {% endfor %}
                 </div>
             </div>
             <div class="col">
                 <h2>Messages</h2>
+                {% if product %}
                 <div class="list-group">
                     <a href="#" class="list-group-item list-group-item-action">
                         <div class="d-flex w-100 justify-content-between">
@@ -55,30 +55,33 @@
                         </form>
                     </a>
                 </div>
+                {% endif %}
             </div>
             <div class="col">
                 <h2>Send</h2>
+                {% if message %}
                 <div class="card">
-                <div class="card-header">
-                    On Delivery
-                </div>
-                <div class="card-body">
-                    <p class="card-text">Your Powdered Milk is being sent</p>
-                </div>
-                <div class="card-footer">
-                    <form>
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text rounded-0">Tel:</span>
+                    <div class="card-header">
+                        On Delivery
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Your Powdered Milk is being sent</p>
+                    </div>
+                    <div class="card-footer">
+                        <form>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text rounded-0">Tel:</span>
+                                </div>
+                                <input type="tel" class="form-control" placeholder="(201) 555-0123">
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary" type="button" id="button-addon2">Send</button>
+                                </div>
                             </div>
-                            <input type="tel" class="form-control" placeholder="(201) 555-0123">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary" type="button" id="button-addon2">Send</button>
-                            </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
-                </div>
+                {% endif %}
             </div>
         </div>
     </div>
