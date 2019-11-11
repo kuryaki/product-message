@@ -20,39 +20,32 @@
             </div>
             <div class="col">
                 <h2>Messages</h2>
-                {% if product %}
+                {% if selected_product %}
                 <div class="list-group">
                 {% for message in messages %}
-                    <a href="#" class="list-group-item list-group-item-action">
+                    <a href="/messages/{{message.id}}/send" class="list-group-item list-group-item-action">
                         <div class="d-flex w-100 justify-content-between">
                             <h5 class="mb-1">{{message.name}}</h5>
                         </div>
                         <p class="mb-1">{{message.content}}</p>
-                    </a>
-                    <a href="#" class="list-group-item list-group-item-action">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h5 class="mb-1">Thank you with price</h5>
-                        </div>
-                        {% raw %}
-                        <p class="mb-1">Thanks for purchasing {{product.name}} for {{product.price}}</p>
-                        {% endraw %}
                     </a>
                 {% endfor %}
                     <a href="#" class="list-group-item list-group-item-action">
                         <div class="d-flex w-100 justify-content-between">
                             <h5 class="mb-1">Add new Message</h5>
                         </div>
-                        <form>
-                            <input type="hidden" id="productId" name="productId" value="{{product.id}}">
+                        <form method="POST" action="/products/{{selected_product.id}}/messages" role="form">
+                            {{ messageForm.hidden_tag() }}
+                            <input type="hidden" id="productId" name="product_id" value="{{selected_product.id}}">
                             <div class="form-group">
                                 <label for="messageName">Message Name</label>
-                                <input id="messageName" class="form-control" type="text">
+                                <input id="messageName" name="name" class="form-control" type="text">
                             </div>
                             <div class="form-group">
                                 <label for="messageContent">Message Content</label>
-                                <textarea class="form-control" id="messageContent" rows="3" placeholder="Message Content"></textarea>
+                                <textarea class="form-control" id="messageContent" name="content" rows="3" placeholder="Message Content"></textarea>
                             </div>
-                            <button type="button" class="btn btn-primary btn-sm">Save</button>
+                            <button type="submit" class="btn btn-primary btn-sm">Save</button>
                         </form>
                     </a>
                 </div>
@@ -60,23 +53,25 @@
             </div>
             <div class="col">
                 <h2>Send</h2>
-                {% if message %}
+                {% if selected_message %}
                 <div class="card">
                     <div class="card-header">
                         On Delivery
                     </div>
                     <div class="card-body">
-                        <p class="card-text">Your Powdered Milk is being sent</p>
+                        <p class="card-text">{{ message_content }}</p>
                     </div>
                     <div class="card-footer">
-                        <form>
+                        <form method="POST" action="/messages/{{selected_message.id}}/send" role="form">
+                            {{ sendForm.hidden_tag() }}
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text rounded-0">Tel:</span>
                                 </div>
-                                <input type="tel" class="form-control" placeholder="(201) 555-0123">
+                                <input type="hidden" id="messageContent" name="content" value="{{message_content}}">
+                                <input type="tel" class="form-control" id="phone" name="phone" placeholder="(201) 555-0123">
                                 <div class="input-group-append">
-                                    <button class="btn btn-primary" type="button" id="button-addon2">Send</button>
+                                    <button type="submit" class="btn btn-primary" type="button" id="button-addon2">Send</button>
                                 </div>
                             </div>
                         </form>

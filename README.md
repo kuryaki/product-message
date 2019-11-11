@@ -77,11 +77,12 @@ Sends Message
 - [x] Populate server rendered HTML from models
 - [x] Fix home view
 - [x] Add selected product handler and fix view
-- [ ] Add Create Message form handler
-- [ ] Add selected message handler and fix view
+- [X] Add Create Message form handler
+- [X] Add selected message handler and fix view
+- [X] Switch message list depending on product
+- [X] Store a message
+- [X] Make routes work 
+- [ ] Send Message Through Twilio
 - [ ] Organize BE code
 - [ ] Add React to UI 
-- [ ] Switch message list depending on product
-- [ ] Store a message
-- [ ] Make routes work 
 
