@@ -4,6 +4,12 @@
 
 https://opensource.com/article/19/5/python-3-default-mac
 
+## Run
+
+1. `source venv/bin/activate`
+2. `pip install -r requirements.txt`
+3. `flask run`
+
 ## Use Cases
 
 Three Column view
@@ -83,6 +89,6 @@ Sends Message
 - [X] Store a message
 - [X] Make routes work 
 - [X] Send Message Through Twilio
-- [ ] Organize BE code
+- [x] Organize BE code
 - [ ] Add React to UI 
 
