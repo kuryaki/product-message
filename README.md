@@ -50,28 +50,6 @@ Products List | Messages List | Message Content
 - productId (ref)
 - id
 
-
-### Routes
-
-```
-GET /
-```
-List Products
-```
-POST /messages
-```
-Save a Message
-
-```
-GET /messages
-```
-List Messages
-
-```http
-POST /messages/:id/send
-```
-Sends Message
-
 ## TODO
 
 - [x] Setup environment
